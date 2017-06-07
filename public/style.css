@@ -147,40 +147,55 @@ a:focus {
   outline: none;
 }
 
-.twit-container {
+.space-container {
   margin: 50px 10%;
   display: flex;
   flex-wrap: wrap;
 }
 
-.twit {
+.space{
   flex: 0 1 28%;
-  display: flex;
-  margin: 2px;
-  padding: 20px;
+  margin: 5px;
+  padding: 10px;
   border: 1px solid #dadada;
-  border-radius: 2px;
+  border-radius: 12px;
   background-color: #fff;
 }
 
-.twit-icon {
-  font-size: 24px;
+.first-line{
+  display: flex;
 }
 
-.twit-content {
-  flex: 1 1 80%;
+.park-icon{
+  font-size: 20px;
+}
+
+.park-content{
+  flex 1 1 80%;
   margin-left: 10px;
 }
 
-.twit-content p {
-  margin: 0;
+.img-container{
+  margin:10px 10px 10px 10px;
+  text-align: center;
+  
 }
 
-.twit-content .twit-attribution {
-  margin-top: 8px;
-  text-align: right;
-  font-weight: bold;
+
+.dismiss-button{
+  font-family: sans-serif;
+  position: absolute;
+  top 0;
+  left: 450px;
+  font-size: 30px;
+  display: none;
+  cursor: pointer;
 }
+
+.space:hover .dismiss-button{
+  display: initial;
+}
+
 
 #create-twit-button {
   position: fixed;
