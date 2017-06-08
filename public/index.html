@@ -210,6 +210,43 @@
 
       </div>
     </div>
+          
+                           <!-- This is for larger view -->
+
+      <!-- I desinged it that every larger view is initailly hidden and by clicking the picture, or proper place, it shows up. -->
+      <!-- I will write it for one post in this case, because we will pull up the data from json file so we don't need everything. -->
+
+
+    <div id="modal-backdrop" class="hidden"></div>
+    <div id="larger-view-modal" class="hidden">
+      <div class="modal-dialog">
+
+        <div class="modal-header">
+          <h3>Detail Information</h3>
+          <button type="button" class="modal-close-button">&times;</button>
+        </div>
+
+        <div class="modal-body">
+            <span class="img-container">
+                <img class="park-photo-img" src="http://www.iciprivatesale.com/wp-content/uploads/2017/02/resurfaced-concrete-parking-lot.jpg" height="400px" width="650px">
+            </span>
+            <span class="detail-container">
+                <p class="detail-name">Name: Seungrae</p>
+                <p class="detail-address">Address: 9999 NW 99ST </p>
+                <p class="detail-city">City: Corvallis</p>
+                <p class="detail-size">Size: Large</p>
+                <p class="detail-day">Day: Medium</p>
+                <p class="detail-price">Price: 5.00</p>
+                <p class="detail-description"><br />Description <br /><br /> It is nice place!</p>
+            </span>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="modal-reserve-button">Reserve</button>
+        </div>
+
+      </div>
+    </div>
   </body>
 
   <script src="index.js" charset="utf-8"></script>
