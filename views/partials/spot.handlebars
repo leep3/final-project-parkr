@@ -1,13 +1,16 @@
-  <article class="twit">
-    <div class="twit-icon">
-      <i class="fa fa-bullhorn"></i>
+  <article class="spot">
+    <div class="spot-picture">
+      <img src={{ pic }} alt="Spot Picture" />
     </div>
-    <div class="twit-content">
-      <p class="twit-text">
-        {{ text }}
-      </p>
-      <p class="twit-attribution">
-        <a href="#">{{ author }}</a>
-      </p>
+    <div class="spot-container">
+		<div class="hidden">
+			<p id="price">{{ price }}</p>
+			<p id="days">{{ days }}</p>
+			<p id="size">{{ size }}</p>
+			<p id="name">{{ name }}</p>
+		</div>
+		<div class="address">
+			{{ address }}
+		</div>
     </div>
   </article>
