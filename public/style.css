@@ -227,6 +227,8 @@ a:focus {
   outline: none;
 }
 
+                                        /* These are for creating space display */ 
+
 #modal-backdrop {
   position: fixed;
   top: 0;
@@ -237,7 +239,7 @@ a:focus {
   background-color: rgba(0, 0, 0, 0.85);
 }
 
-#create-twit-modal {
+#create-space-modal {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -286,28 +288,62 @@ a:focus {
   padding: 20px;
 }
 
-.twit-input-element {
+.space-input-element {
   display: flex;
   align-items: center;
   font-size: 20px;
   margin: 10px 0;
 }
 
-.twit-input-element label {
+.space-input-element label {
   font-weight: 600;
   flex: 1 75px;
   margin-right: 10px;
 }
 
-.twit-input-element input,
-.twit-input-element textarea {
+.space-input-element input,
+.space-input-element textarea {
   flex: 6 200px;
   padding: 8px;
   font-size: 20px;
   border: 1px solid #aaa;
 }
 
-.twit-input-element textarea {
+.space-size-buttons{
+    width: 438.28px;
+}
+
+.space-size-button{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#space-day-input {
+    width: 438.28px;
+    padding: 8px;
+    font-size: 20px;
+} 
+
+#space-picture-input {
+    margin-left: 10px;
+}
+
+.space-picture-button {
+    font-size: 20px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.space-picture-button:hover {
+    background-color: #eee;
+}
+
+.space-input-element textarea {
   min-height: 64px;
 }
 
@@ -357,3 +393,4 @@ a:focus {
   font-size: 36px;
   font-weight: 400;
 }
+
