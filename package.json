@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "handlebars views/partials/parkrTemplate.handlebars -f public/parkrTemplate.js",
+    "build": "handlebars views/index.handlebars -f public/index.js",
     "prestart": "npm run build",
     "start": "node server.js"
   },
@@ -24,6 +24,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
+    "geolib": "^2.0.22",
     "handlebars": "^4.0.10",
     "node-geocoder": "^3.16.0",
     "promise-simple": "^0.1.0",
