@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>asdf</title>
+		<title>Welcome to Parkr</title>
 	</head>
 	
 	<body>
-		{{< header }}
+
 		<div class="welcome">Welcome to Parkr</div>
 		<div class="guide">Enter a city</div>
-		<form method="post" action="/">
+		<form method="post" action="/search">
 			Address<input type="text" name="search[city]">
-			Radius<input type="number" name="radius" min="1">
+			Radius<input type="number" name="search[radius]" min="1">
 			<input type="submit" value="Submit" id="button-search">
 		</form>
 	</body>
