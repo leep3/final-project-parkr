@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Carl Benson",
+		"address": "685 SW Sagebrush Dr.",
+		"size": "large",
+		"price": "30",
+		"days": "mtw",
+		"lat": "44.5602897",
+		"lng": "-123.2918829"
+    },
+	{
+        "name": "Carl Benson",
+		"address": "685 SW Sagebrush Dr.",
+		"size": "large",
+		"price": "30",
+		"days": "mtw",
+		"lat": "44.560414",
+		"lng": "-123.2919428"
+    }
+]
