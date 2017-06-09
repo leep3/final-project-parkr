@@ -81,68 +81,40 @@ if(!load){
 }
 
 app.get('/', function(req, res, next){
-	var templateArgs = {
-		
-	};
-	
-	res.render('index', templateArgs);
+	res.type(path.extname('mainpage.html'));
+	res.send(serverFiles['/mainpage.html']);
 });
-/*
-[ { formattedAddress: '89596 Demming Rd, Elmira, OR 97437, USA',
-    latitude: 44.0899659,
-    longitude: -123.353313,
-    extra:
-     { googlePlaceId: 'ChIJMSU5pBMFwVQRi38uqDegqZ4',
-       confidence: 1,
-       premise: null,
-       subpremise: null,
-       neighborhood: null,
-       establishment: null },
-    administrativeLevels:
-     { level2long: 'Lane County',
-       level2short: 'Lane County',
-       level1long: 'Oregon',
-       level1short: 'OR' },
-    streetNumber: '89596',
-    streetName: 'Demming Road',
-    city: 'Elmira',
-    country: 'United States',
-    countryCode: 'US',
-    zipcode: '97437',
-    provider: 'google' } ]
-	console.log(resp[0].latitude);*/
-	
-	/*
-	[
-		{
-			"spots": {
-				[],[]
-			}
-		}
-	]
-*/
 
 app.post('/search', function(req, res){
+	//Get the user input for address and radius
 	var address = req.body.search.city;
+	//Convert to an int
 	var radius = parseInt(req.body.search.radius);
 
+	//Get the latitude and longitude for the entered address
 	geocoder.geocode(address, function(err, resp){
+		//Store it as an object for later comparison
 		var latlng = {latitude: resp[0].latitude, longitude: resp[0].longitude};
-
+	
+		//Create empty object array
 		var matchingSpots = {};
 		matchingSpots['key'] = [];
-
+		
+		//Loop through all the spots in the JSON file 
 		for(var spot of availSpots){
+			//Get the lat/long of the current spot
 			var spotCoords = {latitude: spot.lat, longitude: spot.lng};
+			
+			//Check if it is within the radius, convert returned meters to miles
 			if(geolib.getDistance(spotCoords, latlng, 10) < (radius * 1609)){
+				//If so, add it to the array
 				matchingSpots['key'].push(spot);
 			}
 		}
-		console.log(matchingSpots);
 	});
 	
 	var templateArgs = {
-		
+		spots: matchingSpots['key']
 	};
 	
 	res.render('parkrTemplate', templateArgs);
@@ -150,8 +122,16 @@ app.post('/search', function(req, res){
 
 app.get('*', function(req, res, next){
 	if(serverFiles[req.url] != undefined){
-		res.type(path.extname(req.url));
-		res.send(serverFiles[req.url]);
+		//Check for image request
+		if(path.extname(req.url) == '.jpg'){
+			//Send image
+			res.sendFile(__dirname + '/public/' + req.url);
+		}
+		//Else, send the file
+		else{
+			res.type(path.extname(req.url));
+			res.send(serverFiles[req.url]);
+		}
 	}
 	else{
 		next();
