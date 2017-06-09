@@ -90,15 +90,18 @@ app.post('/search', function(req, res){
 	var address = req.body.search.city;
 	//Convert to an int
 	var radius = parseInt(req.body.search.radius);
+	//Get desired days
+	var days = req.body.search.days;
 
+	//Create empty object array
+	var matchingSpots = {};
+	matchingSpots['key'] = [];
+		
 	//Get the latitude and longitude for the entered address
 	geocoder.geocode(address, function(err, resp){
 		//Store it as an object for later comparison
 		var latlng = {latitude: resp[0].latitude, longitude: resp[0].longitude};
 	
-		//Create empty object array
-		var matchingSpots = {};
-		matchingSpots['key'] = [];
 		
 		//Loop through all the spots in the JSON file 
 		for(var spot of availSpots){
@@ -109,15 +112,17 @@ app.post('/search', function(req, res){
 			if(geolib.getDistance(spotCoords, latlng, 10) < (radius * 1609)){
 				//If so, add it to the array
 				matchingSpots['key'].push(spot);
+				console.log('match');
 			}
 		}
+		
+		var templateArgs = {
+			spots: matchingSpots['key']
+		};
+		console.log(matchingSpots['key']);
+		res.render('parkrTemplate', templateArgs);
 	});
-	
-	var templateArgs = {
-		spots: matchingSpots['key']
-	};
-	
-	res.render('parkrTemplate', templateArgs);
+
 });
 
 app.get('*', function(req, res, next){
