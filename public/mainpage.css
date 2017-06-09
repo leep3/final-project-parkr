@@ -15,6 +15,7 @@
 {
 	border: 10px;
 	background-color: black;
+        font-size: 25px;
 	color: white;
 	padding: 10px;
 
@@ -23,9 +24,9 @@
 .site-title {
   	margin: 0px;
   	padding: 10px 20px;
-  	font-size: 30px;
-  	font-weight: 100;
-  	background: linear-gradient(to bottom, #319df6, #00FFFF);
+  	font-size: 50px;
+  	font-weight: bold;
+  	background-color: #dc4405;
   	color: #fff;
 }
 
