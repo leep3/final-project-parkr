@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="screen">
+    		<link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700" rel="stylesheet">
+    		<link rel="stylesheet" href="mainpage.css" media="screen">
+      		<a href="#"><h1 class="site-title"><i class="fa fa-car"></i>P@rkr</h1></a>
+		<title>Welcome to Parkr</title>
+	</head>
+	
+	<body>
+
+		<div class="welcome">Welcome to Parkr</div>
+		<div class="guide">Find a spot to park!</div>
+		<form class = "postInput" method="post" action="/search">
+			Location<input class = "inputs" type="text" name="search[city]">
+			Days of Availibility<input class = "inputs" type="text" name="search[days]">
+			<input class = "inputs" type="submit" value="Submit" id="button-search">
+		</form>
+	</body>
+</html>
