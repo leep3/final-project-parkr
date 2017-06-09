@@ -89,9 +89,9 @@ app.post('/search', function(req, res){
 	//Get the user input for address and radius
 	var address = req.body.search.city;
 	//Convert to an int
-	var radius = parseInt(req.body.search.days);
+	var radius = parseInt(req.body.search.radius);
 	//Get desired days
-	//var days = req.body.search.days;
+	var days = req.body.search.days;
 
 	//Create empty object array
 	var matchingSpots = {};
