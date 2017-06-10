@@ -1,21 +1,29 @@
 <!DOCTYPE HTML>
-<html>
+<html class="htmldeco">
 	<head>
+
     		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="screen">
     		<link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700" rel="stylesheet">
-    		<link rel="stylesheet" href="mainpage.css" media="screen">
-      		<a href="#"><h1 class="site-title"><i class="fa fa-car"></i>P@rkr</h1></a>
+    		<link rel="stylesheet" href="style.css" media="screen">
+                <meta charset="utf-8">
 		<title>Welcome to Parkr</title>
 	</head>
 	
-	<body>
+	<body class="image-container">
 
-		<div class="guide">Find a spot to park!</div>
-		<form class = "postInput" method="post" action="/search">
-			Location<input class = "inputs" type="text" name="search[city]">
-			Days of Availibility<input class = "inputs" type="text" name="search[days]">
-			Radius<input class = "inputs" type="number" name="search[radius]" min="1">
-			<input class = "inputs" type="submit" value="Submit" id="button-search">
-		</form>
+          <header>
+            <a href="#"><h1 class="site-title"><i class="fa fa-car"></i>P@rkr</h1></a>
+            <nav class="navbar">
+             <ul class="navlist2">
+               <li><a class="active" href="#">Find a spot to park!</a></li>
+             </ul>
+            </nav>
+          </header>
+	  <form class = "postInput" method="post" action="/search">
+	    Location<input class = "inputs" type="text" name="search[city]">
+	    Days    <input class = "inputs" type="text" name="search[days]">
+	    Radius  <input class = "inputs" type="number" name="search[radius]" min="1">
+	    <input class = "inputs" type="submit" value="Submit" id="button-search">
+	  </form>
 	</body>
 </html>
