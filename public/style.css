@@ -416,7 +416,7 @@ a:focus {
   font-weight: 400;
 }
 
-// CSS for larger view
+/* CSS for larger view */
 
 #larger-view-modal {
     position: fixed;
