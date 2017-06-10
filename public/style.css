@@ -416,3 +416,39 @@ a:focus {
   font-weight: 400;
 }
 
+// CSS for larger view
+
+#larger-view-modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1010;
+    overflow: scroll;
+}
+
+#larger-view-modal .modal-dialog{
+    max-width: 1000px;
+    max-height: 800px ;
+}
+
+#larger-view-modal .modal-body{
+    display:flex;
+    padding-top: 0px;
+}
+
+#larger-view-modal .img-container {
+    margin: 10px 10px 10px 10px;
+    border: 1px;
+    text-align: left;
+}
+
+.modal-footer .modal-reserve-button {
+    background-color: #319df6;
+    color: #fff;
+}
+
+.modal-footer .modal-reserve-button:hover {
+    background-color: #087dde;
+}
