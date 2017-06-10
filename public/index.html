@@ -73,7 +73,7 @@
           <div class="park-content">
               SeungRae
           </div>
-  <!--        <div class="dismiss-button">&times;</div>  --!>
+  <!--        <div class="dismiss-button">&times;</div>  -->
         </div>
         <div class="img-container">
           <img class="park-photo-img" src="http://www.iciprivatesale.com/wp-content/uploads/2017/02/resurfaced-concrete-parking-lot.jpg" height="250px" width="350px">
@@ -102,7 +102,7 @@
           <div class="park-content">
               Carl
           </div>
-  <!--        <div class="dismiss-button">&times;</div>  --!>
+  <!--        <div class="dismiss-button">&times;</div>  -->
         </div>
         <div class="img-container">
           <img class="park-photo-img" src="http://1.bp.blogspot.com/-SxGt1e743DE/UreyS7ZWQPI/AAAAAAAAAWc/HX7etX0opXQ/s1600/StatHR2.jpg" height="250px" width="350px">
@@ -132,7 +132,7 @@
           <div class="park-content">
               Tommy
           </div>
-  <!--        <div class="dismiss-button">&times;</div>  --!>
+  <!--        <div class="dismiss-button">&times;</div>  -->
         </div>
         <div class="img-container">
           <img class="park-photo-img" src="https://odis.homeaway.com/odis/listing/841f4dfe-3041-4068-a0f3-83b64d0a31b2.c10.jpg" height="250px" width="350px">
@@ -162,7 +162,7 @@
           <div class="park-content">
               Paul
           </div>
-  <!--        <div class="dismiss-button">&times;</div>  --!>
+  <!--        <div class="dismiss-button">&times;</div>  -->
         </div>
         <div class="img-container">
           <img class="park-photo-img" src="http://www.bpmco.com/wp-content/uploads/2015/01/DSC01749-543x365.jpg" height="250px" width="350px">
@@ -187,6 +187,9 @@
     </main>
 
     <button type="button" id="create-space-button"><i class="fa fa-map-pin"></i></button>
+
+
+
                        <!-- This is for creating space display -->
     <div id="modal-backdrop" class="hidden"></div>
     <div id="create-space-modal" class="hidden">
@@ -262,15 +265,16 @@
 
       </div>
     </div>
-          
-          
-                           <!-- This is for larger view -->
+
+
+
+
+                             <!-- This is for larger view -->
 
       <!-- I desinged it that every larger view is initailly hidden and by clicking the picture, or proper place, it shows up. -->
       <!-- I will write it for one post in this case, because we will pull up the data from json file so we don't need everything. -->
-      <!-- We could also make that there is only one and when user click any picture, then get the data from database and make larger view. -->
 
-    <div id="larger-view-modal" class="hidden">  <!-- Don't forget to unhidden modal-backdrop when we use this display. -->
+    <div id="larger-view-modal" class="hidden">
       <div class="modal-dialog">
 
         <div class="modal-header">
@@ -279,10 +283,10 @@
         </div>
 
         <div class="modal-body">
-            <span class="img-container">
+            <div class="img-container">
                 <img class="park-photo-img" src="http://www.iciprivatesale.com/wp-content/uploads/2017/02/resurfaced-concrete-parking-lot.jpg" height="400px" width="650px">
-            </span>
-            <span class="detail-container">
+            </div>
+            <div class="detail-container">
                 <p class="detail-name">Name: Seungrae</p>
                 <p class="detail-address">Address: 9999 NW 99ST </p>
                 <p class="detail-city">City: Corvallis</p>
@@ -290,7 +294,7 @@
                 <p class="detail-day">Day: Medium</p>
                 <p class="detail-price">Price: 5.00</p>
                 <p class="detail-description"><br />Description <br /><br /> It is nice place!</p>
-            </span>
+            </div>
         </div>
 
         <div class="modal-footer">
