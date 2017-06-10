@@ -60,10 +60,10 @@ window.addEventListener('DOMContentLoaded', function(event){
   var largerViewButton = document.getElementsByClassName('space');
   for (var i = 0 ; i < largerViewButton.length ; i++) {
       console.log('working');
-      largerViewButton[i].addEventListener('click', showLargerViewModal);
+      largerViewButton[i].addEventListener('click',showLargerViewModal);
   }
 
   var closeLargerView = document.getElementById('larger-view-modal').querySelector('.modal-close-button');
-  closeLargerView.addEventListener('click', hideLargerViewModal);
+  closeLargerView.addEventListener('click',hideLargerViewModal);
 
 });
