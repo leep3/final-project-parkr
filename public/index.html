@@ -264,13 +264,7 @@
     </div>
           
           
-                           <!-- This is for larger view -->
-
-      <!-- I desinged it that every larger view is initailly hidden and by clicking the picture, or proper place, it shows up. -->
-      <!-- I will write it for one post in this case, because we will pull up the data from json file so we don't need everything. -->
-      <!-- We could also make that there is only one and when user click any picture, then get the data from database and make larger view. -->
-
-    <div id="larger-view-modal" class="hidden">  <!-- Don't forget to unhidden modal-backdrop when we use this display. -->
+    <div id="larger-view-modal" class="hidden">
       <div class="modal-dialog">
 
         <div class="modal-header">
@@ -279,10 +273,10 @@
         </div>
 
         <div class="modal-body">
-            <span class="img-container">
+            <div class="img-container">
                 <img class="park-photo-img" src="http://www.iciprivatesale.com/wp-content/uploads/2017/02/resurfaced-concrete-parking-lot.jpg" height="400px" width="650px">
-            </span>
-            <span class="detail-container">
+            </div>
+            <div class="detail-container">
                 <p class="detail-name">Name: Seungrae</p>
                 <p class="detail-address">Address: 9999 NW 99ST </p>
                 <p class="detail-city">City: Corvallis</p>
@@ -290,7 +284,7 @@
                 <p class="detail-day">Day: Medium</p>
                 <p class="detail-price">Price: 5.00</p>
                 <p class="detail-description"><br />Description <br /><br /> It is nice place!</p>
-            </span>
+            </div>
         </div>
 
         <div class="modal-footer">
@@ -299,6 +293,7 @@
 
       </div>
     </div>
+
 
   </body>
 
