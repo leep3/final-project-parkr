@@ -55,7 +55,7 @@ window.addEventListener('DOMContentLoaded', function(event){
   closeCreateSpace1.addEventListener('click',hideCreateSpaceModal);
 
   var closeCreateSpace2 = document.querySelector('.modal-cancel-button');
-  closeCreateSpace2.addEventListener('click',hideCreateSpaceModal);  
+  closeCreateSpace2.addEventListener('click', hideCreateSpaceModal);
 
   var largerViewButton = document.getElementsByClassName('space');
   for (var i = 0 ; i < largerViewButton.length ; i++) {
@@ -65,5 +65,4 @@ window.addEventListener('DOMContentLoaded', function(event){
 
   var closeLargerView = document.getElementById('larger-view-modal').querySelector('.modal-close-button');
   closeLargerView.addEventListener('click', hideLargerViewModal);
-
 });
