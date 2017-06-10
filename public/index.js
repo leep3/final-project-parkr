@@ -31,6 +31,22 @@ function hideCreateSpaceModal(){
   clearCreateSpaceModal();
 }
 
+function showLargerViewModal() {
+    var back = document.getElementById('modal-backdrop');
+    var larger = document.getElementById('larger-view-modal');
+
+    back.classList.remove('hidden');
+    larger.classList.remove('hidden');
+}
+
+function hideLargerViewModal() {
+    var back = document.getElementById('modal-backdrop');
+    var larger = document.getElementById('larger-view-modal');
+
+    back.classList.add('hidden');
+    larger.classList.add('hidden');
+}
+
 window.addEventListener('DOMContentLoaded', function(event){
   var createSpaceButton = document.getElementById('create-space-button');
   createSpaceButton.addEventListener('click',showCreateSpaceModal); 
@@ -41,5 +57,13 @@ window.addEventListener('DOMContentLoaded', function(event){
   var closeCreateSpace2 = document.querySelector('.modal-cancel-button');
   closeCreateSpace2.addEventListener('click',hideCreateSpaceModal);  
 
+  var largerViewButton = document.getElementsByClassName('space');
+  for (var i = 0 ; i < largerViewButton.length ; i++) {
+      console.log('working');
+      largerViewButton[i].addEventListener('click', showLargerViewModal);
+  }
+
+  var closeLargerView = document.getElementById('larger-view-modal').querySelector('.modal-close-button');
+  closeLargerView.addEventListener('click', hideLargerViewModal);
 
 });
