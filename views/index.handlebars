@@ -1,17 +1,17 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Welcome to Parkr</title>
-	</head>
-	
-	<body>
+<header>
+  <a href="#"><h1 class="site-title"><i class="fa fa-car"></i>P@rkr</h1></a>
+  <nav class="navbar">
+    <ul class="navlist2">
+      <li><a class="active" href="#">Find a spot to park!</a></li>
+    </ul>
+  </nav>
+</header>
+<main class="image-container">	  
+<form class = "postInput" method="post" action="/search">
+ Location<input class = "inputs" type="text" name="search[city]">
+ Days    <input class = "inputs" type="text" name="search[days]">
+ Radius  <input class = "inputs" type="number" name="search[radius]" min="1">
+ <input class = "inputs" type="submit" value="Submit" id="button-search">
+</form>
+</main>
 
-		<div class="welcome">Welcome to Parkr</div>
-		<div class="guide">Enter a city</div>
-		<form method="post" action="/search">
-			Address<input type="text" name="search[city]">
-			Radius<input type="number" name="search[radius]" min="1">
-			<input type="submit" value="Submit" id="button-search">
-		</form>
-	</body>
-</html>
