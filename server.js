@@ -9,7 +9,7 @@ var NodeGeocoder = require('node-geocoder');
 var modRequest = require('request');
 var Promise = require('promise-simple');
 var geolib = require('geolib');
-var availSpots
+var availSpots;
 fs.readFile('./spots.json', 'utf-8', function(err, data){
 	availSpots = JSON.parse(data);
 });
