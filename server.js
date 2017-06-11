@@ -80,8 +80,7 @@ if(!load){
 }
 
 app.get('/', function(req, res, next){
-	res.type(path.extname('mainpage.html'));
-	res.send(serverFiles['/mainpage.html']);
+	res.render('index');
 });
 
 app.post('/search', function(req, res){
@@ -100,15 +99,14 @@ app.post('/search', function(req, res){
 	geocoder.geocode(address, function(err, resp){
 		//Store it as an object for later comparison
 		var latlng = {latitude: resp[0].latitude, longitude: resp[0].longitude};
-	
 		
 		//Loop through all the spots in the JSON file 
 		for(var spot of availSpots){
 			//Get the lat/long of the current spot
 			var spotCoords = {latitude: spot.lat, longitude: spot.lng};
 			
-			//Check if it is within the radius, convert returned meters to miles
-			if(geolib.getDistance(spotCoords, latlng, 10) < (radius * 1609)){
+			//Check if it is within the radius, convert returned meters to miles, and available
+			if((geolib.getDistance(spotCoords, latlng, 10) < (radius * 1609)) && (spot.avail)){
 				//If so, add it to the array
 				matchingSpots['key'].push(spot);
 			}
@@ -117,17 +115,57 @@ app.post('/search', function(req, res){
 		var templateArgs = {
 			spaceData: matchingSpots['key']
 		};
+
 		res.render('mainPage', templateArgs);
 	});
 
 });
 
+//Function for adding spots
 app.post('/add', function(req, res, next){
-	
+	//Get the lat/long of the address for easier searching later
+	geocoder.geocode(req.body.Address + " " + req.body.City, function(err, resp){
+		//Create a new spot object
+		var newSpot = {
+			Name: req.body.Name,
+			Address: req.body.Address,
+			City: req.body.City,
+			Price: req.body.Price,
+			Day: req.body.Day,
+			Picture: req.body.Picture,
+			Description: req.body.Description,
+			lat: resp[0].latitude,
+			lng: resp[0].longitude,
+			avail: true
+		};
+		
+		//Add the new spot to the array 
+		availSpots.push(newSpot);
+		
+		//Save the updated array to the spot.json
+		fs.writeFile("./spots.json", JSON.stringify(availSpots), function(err){
+			if(err){
+				console.log(err);
+			}
+		});
+	});
 });
 
+//Remove a spot
 app.post('/delete', function(req, res, next){
-	
+	//Get the address from the spot to be deleted
+	var spotAddress = req.body.Address.split(": ")[1];
+	//Loop through the spots until we find a match
+	for(var spot of availSpots){
+		//Check for a match, convert to uppercase for case insenitive search
+		if(spot.Address.toUpperCase() == spotAddress.toUpperCase()){
+			//Take out the spot and reform the array
+			availSpots.splice(availSpots.indexOf(spot), 1);
+			//Let the browser know it was successful
+			res.status(200).send();
+			break;
+		}
+	}
 });
 
 app.post('/reserve', function(req, res, next){
