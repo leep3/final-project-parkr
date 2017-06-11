@@ -52,7 +52,7 @@ function insertNewSpace(){
         Day: day,
         Picture: picture,
         Description: description
-	)};
+	}));
 
 	hideCreateSpaceModal();
   }
@@ -66,7 +66,7 @@ function removeSpace(event){
 	xhr.sendRequestHeader('Content-Type', 'application/json');
 	xhr.send(JSON.stringify({
 		Address: address
-	)};
+	}));
 }
 
 function reserveSpace(event){
@@ -77,7 +77,7 @@ function reserveSpace(event){
 	xhr.sendRequestHeader('Content-Type', 'application/json');
 	xhr.send(JSON.stringify({
 		Address: address
-	)};
+	}));
 }
 
 function showLargerViewModal() {
