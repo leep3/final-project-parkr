@@ -498,3 +498,7 @@ a:focus {
 .modal-footer .modal-reserve-button:hover {
     background-color: #087dde;
 }
+
+.select {
+    font-weight:bold
+}
