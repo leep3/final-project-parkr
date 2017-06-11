@@ -56,6 +56,9 @@ function insertNewSpace(){
 
 	hideCreateSpaceModal();
   }
+  else{
+	  alert("You must specify all the values marked by a *");
+  }
 }
 
 function removeSpace(event){
