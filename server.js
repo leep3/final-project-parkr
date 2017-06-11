@@ -168,8 +168,21 @@ app.post('/delete', function(req, res, next){
 	}
 });
 
+//Reserve spot
 app.post('/reserve', function(req, res, next){
-	
+	//Get the address from the spot to be reserved
+	var spotAddress = req.body.Address.split(": ")[1];
+	//Loop through the spots until we find a match
+	for(var spot of availSpots){
+		//Check for a match, convert to uppercase for case insenitive search
+		if(spot.Address.toUpperCase() == spotAddress.toUpperCase()){
+			//Change the availability to false
+			availSpots.indexOf(spot).avail = false;
+			//Let the browser know it was successful
+			res.status(200).send();
+			break;
+		}
+	}
 });
 app.get('*', function(req, res, next){
 	if(req.url.charAt(0) != '/'){
