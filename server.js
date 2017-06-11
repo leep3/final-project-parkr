@@ -100,7 +100,6 @@ app.post('/search', function(req, res){
 	geocoder.geocode(address, function(err, resp){
 		//Store it as an object for later comparison
 		var latlng = {latitude: resp[0].latitude, longitude: resp[0].longitude};
-	
 		
 		//Loop through all the spots in the JSON file 
 		for(var spot of availSpots){
@@ -152,8 +151,21 @@ app.post('/add', function(req, res, next){
 	});
 });
 
+//Remove a spot
 app.post('/delete', function(req, res, next){
-
+	//Get the address from the spot to be deleted
+	var spotAddress = req.body.Address.split(": ")[1];
+	//Loop through the spots until we find a match
+	for(var spot of availSpots){
+		//Check for a match, convert to uppercase for case insenitive search
+		if(spot.Address.toUpperCase() == spotAddress.toUpperCase()){
+			//Take out the spot and reform the array
+			availSpots.splice(availSpots.indexOf(spot), 1);
+			//Let the browser know it was successful
+			res.status(200).send();
+			break;
+		}
+	}
 });
 
 app.post('/reserve', function(req, res, next){
