@@ -43,7 +43,7 @@ function insertNewSpace(){
   if(name.trim()&&address.trim()&&city.trim()&&price.trim()&&picture.trim()&&day.trim()){
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/add", true);
-	xhr.sendRequestHeader('Content-Type', 'application/json');
+	xhr.setRequestHeader('Content-Type', 'application/json');
 	xhr.send(JSON.stringify({
 		Name: name,
         Address: address,
@@ -66,7 +66,7 @@ function removeSpace(event){
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/delete", true);
-	xhr.sendRequestHeader('Content-Type', 'application/json');
+	xhr.setRequestHeader('Content-Type', 'application/json');
 	xhr.send(JSON.stringify({
 		Address: address
 	}));
@@ -77,7 +77,7 @@ function reserveSpace(event){
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/delete", true);
-	xhr.sendRequestHeader('Content-Type', 'application/json');
+	xhr.setRequestHeader('Content-Type', 'application/json');
 	xhr.send(JSON.stringify({
 		Address: address
 	}));
