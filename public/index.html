@@ -29,14 +29,6 @@
             </div>
           </div>
           <div class="dropdown">
-            <a href="#" class="dropbtn">Size</a>
-            <div class="dropdown-content">
-              <a href="#">Small</a>
-              <a href="#">Medium</a>
-              <a href="#">Large</a>
-            </div>
-          </div>
-          <div class="dropdown">
             <a href="#" class="dropbtn">Days</a>
             <div class="dropdown-content">
               <a href="#">Sunday</a>
@@ -82,9 +74,6 @@
           <p class="location">
             Corvallis
           </p>
-          <p class="size">
-            Small
-          </p>
           <p class="days">
             Sunday
           </p>
@@ -110,9 +99,6 @@
         <div class="hidden">
           <p class="location">
             Corvallis
-          </p>
-          <p class="size">
-            medium
           </p>
           <p class="days">
             Monday
@@ -141,9 +127,6 @@
           <p class="location">
             Portland
           </p>
-          <p class="size">
-            Large
-          </p>
           <p class="days">
             Tuesday
           </p>
@@ -170,9 +153,6 @@
         <div class="hidden">
           <p class="location">
             Salem
-          </p>
-          <p class="size">
-            Large
           </p>
           <p class="days">
             Wednesday
@@ -213,16 +193,14 @@
 
           <div class="space-input-element">
             <label for="space-location-input">Location (City) *</label>
-            <input type="text" id="space-location-input">
-          </div>
-
-          <div class="space-input-element">
-            <label for="space-size-input">Size *</label>
-            <form class="space-size-buttons">
-                <input class="space-size-button" type="radio" name="size" value="small" checked="checked"/> Small
-                <input class="space-size-button" type="radio" name="size" value="medium" /> Medium
-                <input class="space-size-button" type="radio" name="size" value="large" /> Large
-            </form>
+          <select id="space-location-input">
+            <option value="">Select City</option>
+            <option value="">-----------------</option>
+            <option value="Corvallis">Corvallis</option>
+            <option value="Eugene">Eugene</option>
+            <option value="Portland">Portland</option>
+            <option value="Salem">Salem</option>
+          </select>
           </div>
 
           <div class="space-input-element">
@@ -235,13 +213,13 @@
           <select id="space-day-input">
             <option value="">Select Day</option>
             <option value="">-----------------</option>
-            <option value="monday">Monday</option>
-            <option value="tuesday">Tuesday</option>
-            <option value="wednesday">Wednesday</option>
-            <option value="thursday">Thursday</option>
-            <option value="friday">Friday</option>
-            <option value="saturday">Saturday</option>
-            <option value="sunday">Sunday</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
           </select>
 
           </div>
@@ -290,7 +268,6 @@
                 <p class="detail-name">Name: Seungrae</p>
                 <p class="detail-address">Address: 9999 NW 99ST </p>
                 <p class="detail-city">City: Corvallis</p>
-                <p class="detail-size">Size: Large</p>
                 <p class="detail-day">Day: Medium</p>
                 <p class="detail-price">Price: 5.00</p>
                 <p class="detail-description"><br />Description <br /><br /> It is nice place!</p>
