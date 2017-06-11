@@ -344,6 +344,12 @@ a:focus {
     width: 438.28px;
     padding: 8px;
     font-size: 20px;
+}
+
+#space-location-input{
+    width: 438.28px;
+    padding: 8px;
+    font-size: 20px;
 } 
 
 #space-picture-input {
@@ -416,7 +422,6 @@ a:focus {
   font-weight: 400;
 }
 
-/* CSS for larger view */
 
 #larger-view-modal {
     position: fixed;
