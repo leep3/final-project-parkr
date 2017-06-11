@@ -115,9 +115,9 @@ app.post('/search', function(req, res){
 		}
 		
 		var templateArgs = {
-			spots: matchingSpots['key']
+			spaceData: matchingSpots['key']
 		};
-		res.render('spaceData', templateArgs);
+		res.render('mainPage', templateArgs);
 	});
 
 });
