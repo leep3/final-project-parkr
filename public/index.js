@@ -62,7 +62,7 @@ function insertNewSpace(){
 }
 
 function removeSpace(event){
-	var address = event.parentNode.parentNode.querySelector('.detail-address').textContent;
+	var address = event.toElement.parentNode.parentNode.querySelector('.detail-address').textContent;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/delete", true);
@@ -73,10 +73,10 @@ function removeSpace(event){
 }
 
 function reserveSpace(event){
-	var address = event.parentNode.parentNode.querySelector('.detail-address').textContent;
+	var address = event.toElement.parentNode.parentNode.querySelector('.detail-address').textContent;
 	
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "/delete", true);
+	xhr.open("POST", "/reserve", true);
 	xhr.setRequestHeader('Content-Type', 'application/json');
 	xhr.send(JSON.stringify({
 		Address: address
@@ -124,7 +124,6 @@ window.addEventListener('DOMContentLoaded', function(event){
   }
 
 });
-
 
 
 
