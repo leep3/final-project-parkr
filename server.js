@@ -32,6 +32,9 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 
+//Keep track if spots are modified and need to be saved
+var spotChange = false;
+
 //Setup function variable for geo lookup
 var geocodeLoc = function(location){
 	var result;
@@ -68,10 +71,6 @@ function loadFiles(){
 		});
 	});
 	loadFiles = true;
-}
-
-function searchSpots(address, radius){
-	
 }
 
 //Check if files have been loaded
@@ -112,21 +111,33 @@ app.post('/search', function(req, res){
 			if(geolib.getDistance(spotCoords, latlng, 10) < (radius * 1609)){
 				//If so, add it to the array
 				matchingSpots['key'].push(spot);
-				console.log('match');
 			}
 		}
 		
 		var templateArgs = {
 			spots: matchingSpots['key']
 		};
-		console.log(matchingSpots['key']);
 		res.render('parkrTemplate', templateArgs);
 	});
 
 });
 
+app.post('/add', function(req, res, next){
+	
+});
+
+app.post('/delete', function(req, res, next){
+	
+});
+
 app.get('*', function(req, res, next){
-	if(serverFiles[req.url] != undefined){
+	if(req.url.charAt(0) != '/'){
+		var reqUrl = '/' + req.url;
+	}
+	else{
+		var reqUrl = req.url;
+	}
+	if(serverFiles[reqUrl] != undefined){
 		//Check for image request
 		if(path.extname(req.url) == '.jpg'){
 			//Send image
@@ -150,3 +161,26 @@ app.get('*', function(req, res, next){
 app.listen(port, function () {
   console.log("== Server listening on port", port);
 });
+
+//Save the JSON before closing
+//process.stdin.resume();
+/*
+function exitHandler(){
+	console.log(availSpots);
+	if(spotChange){
+		fs.writeFile(__dirname + '/spots.json', availSpots, function(err){
+			if(err){
+				console.log(err);
+			}
+		});
+	}
+}
+
+//do something when app is closing
+process.on('exit', exitHandler.bind());
+
+//catches ctrl+c event
+process.on('SIGINT', exitHandler.bind());
+
+//catches uncaught exceptions
+//process.on('uncaughtException', exitHandler.bind());*/
