@@ -61,8 +61,8 @@ function insertNewSpace(){
   }
 }
 
-function removeSpace(){
-	var address = document.getElementsByClassName('detail-address')[0].textContent;
+function removeSpace(event){
+    var address = document.getElementsByClassName('detail-address')[0].textContent;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/delete", true);
@@ -72,8 +72,8 @@ function removeSpace(){
 	}));
 }
 
-function reserveSpace(){
-	var address = document.getElementsByClassName('detail-address')[0].textContent;
+function reserveSpace(event){
+    var address = document.getElementsByClassName('detail-address')[0].textContent;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/reserve", true);
@@ -83,20 +83,37 @@ function reserveSpace(){
 	}));
 }
 
-function showLargerViewModal() {
-    var back = document.getElementById('modal-backdrop');
-    var larger = document.getElementById('larger-view-modal');
+function reserveButtonAction(event) {
+    var reserveButton = event.toElement;
+    reserveButton.classList.add('reserved');
+    reserveButton.innerHTML = 'Reserved!';
+    var cancelButton = reserveButton.parentNode.querySelector('.modal-cancel-reserve-button');
+    cancelButton.classList.remove('hidden');
+}
 
+function reserveCancelButtonAction(event) {
+    var cancelButton = event.toElement;
+    cancelButton.classList.add('hidden');
+    var reserveButton = cancelButton.parentNode.querySelector('.modal-reserve-button');
+    reserveButton.classList.remove('reserved');
+    reserveButton.innerHTML = 'Reserve';
+}
+
+function showLargerViewModal(event) {
+    var back = document.getElementById('modal-backdrop');
     back.classList.remove('hidden');
-    larger.classList.remove('hidden');
+
+    var address = event.toElement.parentNode.parentNode.querySelector('.larger-view-modal');
+    address.classList.remove('hidden');
+    console.log("work!");
 }
 
 function hideLargerViewModal() {
-    var back = document.getElementById('modal-backdrop');
-    var larger = document.getElementById('larger-view-modal');
 
+    var back = document.getElementById('modal-backdrop');
     back.classList.add('hidden');
-    larger.classList.add('hidden');
+    var address = event.toElement.parentNode.parentNode.parentNode;
+    address.classList.add('hidden');
 }
 
 // These are for filtering.
@@ -178,34 +195,36 @@ sorting = function (i, j) {
     }
 }
 
-
-
 window.addEventListener('DOMContentLoaded', function(event){
   var createSpaceButton = document.getElementById('create-space-button');
   createSpaceButton.addEventListener('click',showCreateSpaceModal); 
 
-  var closeCreateSpace1 = document.querySelector('.modal-close-button');
+  var closeCreateSpace1 = document.querySelectorAll('.modal-close-button')[spaceArticles.length];
   closeCreateSpace1.addEventListener('click',hideCreateSpaceModal);
 
   var closeCreateSpace2 = document.querySelector('.modal-cancel-button');
   closeCreateSpace2.addEventListener('click',hideCreateSpaceModal);  
 
-  var largerViewButton = document.getElementsByClassName('space');
-  for (var i = 0 ; i < largerViewButton.length ; i++) {
-      console.log('working');
-      largerViewButton[i].addEventListener('click',showLargerViewModal);
-  }
 
-  var closeLargerView = document.getElementById('larger-view-modal').querySelector('.modal-close-button');
-  closeLargerView.addEventListener('click',hideLargerViewModal);
+    // largerView and reservation.
+
+  var largerViewButton = document.getElementsByClassName('space');
+  var reserveButton = document.getElementsByClassName('modal-reserve-button');
+  var cancelReserveButton = document.getElementsByClassName('modal-cancel-reserve-button');
+  for (var i = 0 ; i < largerViewButton.length ; i++) {
+      largerViewButton[i].getElementsByTagName('img')[0].addEventListener('click', showLargerViewModal);
+      largerViewButton[i].querySelector('.modal-close-button').addEventListener('click', hideLargerViewModal);
+      reserveButton[i].addEventListener('click', reserveButtonAction);
+      reserveButton[i].addEventListener('click', reserveSpace);
+      cancelReserveButton[i].addEventListener('click', reserveCancelButtonAction);
+      cancelReserveButton[i].addEventListener('click', removeSpace);
+  }
 
   var modalAcceptButton = document.querySelector('.modal-accept-button');
   if(modalAcceptButton){
     modalAcceptButton.addEventListener('click',insertNewSpace);
   }
 
-	
-	
 	// These are for filtering.
   var sortingLocation1 = document.getElementById(contentID[0]).querySelectorAll("a")[0];
   sortingLocationFunction1 = function () { var i = 0; var j = 0; sorting(i, j); };
@@ -270,8 +289,6 @@ window.addEventListener('DOMContentLoaded', function(event){
   var sortingPrice5 = document.getElementById(contentID[2]).querySelectorAll("a")[4];
   sortingPriceFunction5 = function () { var i = 2; var j = 4; sorting(i, j); };
   sortingPrice5.addEventListener('click', sortingPriceFunction5);
-	
-	
 });
 
 
