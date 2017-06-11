@@ -1,62 +1,68 @@
 [
     {
-        "name": "Carl Benson",
-		"address": "685 SW Sagebrush Dr.",
+        "Name": "Carl Benson",
+		"Address": "685 SW Sagebrush Dr.",
 		"size": "large",
-		"price": "30",
-		"days": "mtw",
-		"pic": "https://www.bdcnetwork.com/sites/default/files/parking.jpg",
+		"Price": "30",
+		"Day": "mtw",
+		"Picture": "https://www.bdcnetwork.com/sites/default/files/parking.jpg",
 		"lat": "44.5602897",
-		"lng": "-123.2918829"
+		"lng": "-123.2918829",
+		"Description": "A nice spot"
     },
 	{
-        "name": "Carl Benson",
-		"address": "685 SW Sagebrush Dr.",
+        "Name": "Carl Benson",
+		"Address": "685 SW Sagebrush Dr.",
 		"size": "large",
-		"price": "30",
-		"days": "mtw",
-		"pic": "https://www.bdcnetwork.com/sites/default/files/parking.jpg",
+		"Price": "30",
+		"Day": "mtw",
+		"Picture": "https://www.bdcnetwork.com/sites/default/files/parking.jpg",
 		"lat": "44.5602897",
-		"lng": "-123.2918829"
+		"lng": "-123.2918829",
+		"Description": "A nice spot"
     },
 	{
-        "name": "Carl Benson",
-		"address": "685 SW Sagebrush Dr.",
+        "Name": "Carl Benson",
+		"Address": "685 SW Sagebrush Dr.",
 		"size": "large",
-		"price": "30",
-		"days": "mtw",
-		"pic": "https://www.bdcnetwork.com/sites/default/files/parking.jpg",
+		"Price": "30",
+		"Day": "mtw",
+		"Picture": "https://www.bdcnetwork.com/sites/default/files/parking.jpg",
 		"lat": "44.5602897",
-		"lng": "-123.2918829"
+		"lng": "-123.2918829",
+		"Description": "A nice spot"
     },
 	{
-        "name": "Carl Benson",
-		"address": "685 SW Sagebrush Dr.",
+        "Name": "Carl Benson",
+		"Address": "685 SW Sagebrush Dr.",
 		"size": "large",
-		"price": "30",
-		"days": "mtw",
-		"pic": "https://www.bdcnetwork.com/sites/default/files/parking.jpg",
+		"Price": "30",
+		"Day": "mtw",
+		"Picture": "https://www.bdcnetwork.com/sites/default/files/parking.jpg",
 		"lat": "44.5602897",
-		"lng": "-123.2918829"
+		"lng": "-123.2918829",
+		"Description": "A nice spot"
     },
 	{
-        "name": "Carl Benson",
-		"address": "685 SW Sagebrush Dr.",
+        "Name": "Carl Benson",
+		"Address": "685 SW Sagebrush Dr.",
 		"size": "large",
-		"price": "30",
-		"days": "mtw",
-		"pic": "https://www.bdcnetwork.com/sites/default/files/parking.jpg",
+		"Price": "30",
+		"Day": "mtw",
+		"Picture": "https://www.bdcnetwork.com/sites/default/files/parking.jpg",
 		"lat": "44.5602897",
-		"lng": "-123.2918829"
+		"lng": "-123.2918829",
+		"Description": "A nice spot"
     },
 	{
-        "name": "Carl Benson",
-		"address": "685 SW Sagebrush Dr.",
+        "Name": "Carl Benson",
+		"Address": "685 SW Sagebrush Dr.",
 		"size": "large",
-		"price": "30",
-		"days": "mtw",
-		"pic": "https://www.bdcnetwork.com/sites/default/files/parking.jpg",
+		"Price": "30",
+		"Day": "mtw",
+		"Picture": "https://www.bdcnetwork.com/sites/default/files/parking.jpg",
 		"lat": "44.5602897",
-		"lng": "-123.2918829"
+		"lng": "-123.2918829",
+		"Description": "A nice spot"
     }
 ]
