@@ -26,5 +26,32 @@
       <p class="description">
         {{Description}}
     </div>
+
+    <div class="larger-view-modal hidden">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3>Detail Information</h3>
+                <button type="button" class="modal-close-button">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="img-container">
+                    <img class="park-photo-img" src="{{Picture}}" height="400px" width="650px">
+                </div>
+                <div class="detail-container">
+                    <p class="detail-name">Name: {{Name}}</p>
+                    <p class="detail-address">Address: {{Address}} </p>
+                    <p class="detail-city">City: {{City}}</p>
+                    <p class="detail-day">Day: {{Day}}</p>
+                    <p class="detail-price">Price: {{Price}}</p>
+                    <p class="detail-description"><br />Description <br /><br /> {{Description}}</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="modal-cancel-reserve-button hidden">Cancel</button>
+                <button type="button" class="modal-reserve-button">Reserve</button>
+            </div>
+        </div>
+    </div>
+
 </article>
 
