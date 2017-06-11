@@ -61,8 +61,8 @@ function insertNewSpace(){
   }
 }
 
-function removeSpace(event){
-	var address = event.toElement.parentNode.parentNode.querySelector('.detail-address').textContent;
+function removeSpace(){
+	var address = document.getElementsByClassName('detail-address')[0].textContent;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/delete", true);
@@ -72,8 +72,8 @@ function removeSpace(event){
 	}));
 }
 
-function reserveSpace(event){
-	var address = event.toElement.parentNode.parentNode.querySelector('.detail-address').textContent;
+function reserveSpace(){
+	var address = document.getElementsByClassName('detail-address')[0].textContent;
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/reserve", true);
