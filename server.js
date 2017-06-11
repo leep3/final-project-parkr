@@ -130,6 +130,9 @@ app.post('/delete', function(req, res, next){
 	
 });
 
+app.post('/reserve', function(req, res, next){
+	
+});
 app.get('*', function(req, res, next){
 	if(req.url.charAt(0) != '/'){
 		var reqUrl = '/' + req.url;
