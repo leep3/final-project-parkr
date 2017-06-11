@@ -80,8 +80,7 @@ if(!load){
 }
 
 app.get('/', function(req, res, next){
-	res.type(path.extname('mainpage.html'));
-	res.send(serverFiles['/mainpage.html']);
+	res.render('index');
 });
 
 app.post('/search', function(req, res){
@@ -106,8 +105,8 @@ app.post('/search', function(req, res){
 			//Get the lat/long of the current spot
 			var spotCoords = {latitude: spot.lat, longitude: spot.lng};
 			
-			//Check if it is within the radius, convert returned meters to miles
-			if(geolib.getDistance(spotCoords, latlng, 10) < (radius * 1609)){
+			//Check if it is within the radius, convert returned meters to miles, and available
+			if((geolib.getDistance(spotCoords, latlng, 10) < (radius * 1609)) && (spot.avail)){
 				//If so, add it to the array
 				matchingSpots['key'].push(spot);
 			}
@@ -136,7 +135,8 @@ app.post('/add', function(req, res, next){
 			Picture: req.body.Picture,
 			Description: req.body.Description,
 			lat: resp[0].latitude,
-			lng: resp[0].longitude
+			lng: resp[0].longitude,
+			avail: true
 		};
 		
 		//Add the new spot to the array 
