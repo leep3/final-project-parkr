@@ -22,7 +22,7 @@ var options = {
 
 var geocoder = NodeGeocoder(options);
 
-app.engine('handlebars', exphbs());
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 var load = false;
@@ -117,7 +117,7 @@ app.post('/search', function(req, res){
 		var templateArgs = {
 			spots: matchingSpots['key']
 		};
-		res.render('parkrTemplate', templateArgs);
+		res.render('spaceData', templateArgs);
 	});
 
 });
