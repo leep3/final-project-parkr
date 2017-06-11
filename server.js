@@ -9,7 +9,7 @@ var NodeGeocoder = require('node-geocoder');
 var modRequest = require('request');
 var Promise = require('promise-simple');
 var geolib = require('geolib');
-var availSpots
+var availSpots;
 fs.readFile('./spots.json', 'utf-8', function(err, data){
 	availSpots = JSON.parse(data);
 });
@@ -117,17 +117,43 @@ app.post('/search', function(req, res){
 		var templateArgs = {
 			spaceData: matchingSpots['key']
 		};
+
 		res.render('mainPage', templateArgs);
 	});
 
 });
 
+//Function for adding spots
 app.post('/add', function(req, res, next){
-	
+	//Get the lat/long of the address for easier searching later
+	geocoder.geocode(req.body.Address + " " + req.body.City, function(err, resp){
+		//Create a new spot object
+		var newSpot = {
+			Name: req.body.Name,
+			Address: req.body.Address,
+			City: req.body.City,
+			Price: req.body.Price,
+			Day: req.body.Day,
+			Picture: req.body.Picture,
+			Description: req.body.Description,
+			lat: resp[0].latitude,
+			lng: resp[0].longitude
+		};
+		
+		//Add the new spot to the array 
+		availSpots.push(newSpot);
+		
+		//Save the updated array to the spot.json
+		fs.writeFile("./spots.json", JSON.stringify(availSpots), function(err){
+			if(err){
+				console.log(err);
+			}
+		});
+	});
 });
 
 app.post('/delete', function(req, res, next){
-	
+
 });
 
 app.post('/reserve', function(req, res, next){
