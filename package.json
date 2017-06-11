@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "handlebars views/index.handlebars -f public/index.js",
+    "build": "handlebars views/partials/space.handlebars -f public/spaceTemplate.js",
     "prestart": "npm run build",
     "start": "node server.js"
   },
