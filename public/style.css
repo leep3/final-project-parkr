@@ -9,22 +9,51 @@
         padding: 50px;
         font-size: 25px;
         font-weight: 600;
-        background: linear-gradient(to bottom, white, #d3d3d3, black);
+        background: linear-gradient(to bottom, white, silver, #d3d3d3, white);
         border-radius: 25px;
+		font-family: arial;
+		
 }
+
+/*                                    This part is used for slideshow pictures if we have enough time
+.extraText
+{
+		position: absolute;
+		left: 900px;
+		top: 200px; 
+		height: 250px;
+		width: 400px;
+		margin: 20px;
+		Padding: 50px;
+		border: 1px solid black;
+		border-radius: 2px;
+		background: url("FrontpageBox.png");
+	
+}
+*/ 
 
 .inputs
 {
+		font-family: arial;
         font-size: 15px;
         margin: 5px;
         padding: 10px;
-        background: linear-gradient(to top, #C0C0C0, white);
+        background: linear-gradient(to bottom, #C0C0C0, white, white, white, white);
         border-radius: 10px;
+}
+
+.input_button
+{
+	font-family: arial;
+	padding: 10px;
+	border: 10px;
+	background: linear-gradient(to bottom, #d3d3d3, silver, gray);
+	box-shadow: 5px 5px 15px #888888
 }
 
 .image-container
 {
-        height: 800px;
+        height: 100%;
         width: 100%;
         background: url("HomepageBack.jpg");
         background-repeat: no-repeat;
@@ -59,8 +88,10 @@ a {
   padding: 10px 20px;
   font-size: 50px;
   font-weight: bold;
+  background: linear-gradient(to right, #990000, brown, #dc4405, orange, white);
   background-color: #dc4405;
   color: #fff;
+  font-style: italic;
 }
 
 .navbar {
@@ -84,10 +115,16 @@ a:focus {
 
 .navlist2{
   list-style-type: none;
+  font-style: italic;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: black;
+  border-bottom: 1px solid silver;
+  border-top: 1px solid white;
+  border-bottom-style: ridge;
+
+ 
 }
 
 .navlist2 li{
