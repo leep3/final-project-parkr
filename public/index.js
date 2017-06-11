@@ -32,7 +32,6 @@ function hideCreateSpaceModal(){
 }
 
 function insertNewSpace(){
-
   var name = document.getElementById('space-name-input').value || '';
   var address = document.getElementById('space-address-input').value || '';
   var city = document.getElementById('space-location-input').value || '';
@@ -42,33 +41,43 @@ function insertNewSpace(){
   var day =document.getElementById('space-day-input').value || '';
 
   if(name.trim()&&address.trim()&&city.trim()&&price.trim()&&picture.trim()&&day.trim()){
-/*    storeNewSpace(name,address,city,price,picture,descrition,function(err){
-      if(err){
-        alert("Unable to save Space. Got this error:\n\n" + err);
-      }  
-      else{
-        var spaceTemplate = Handlebars.templates.space;
-        var templateArgs = {
-          Name: name,
-          Address: address,
-          City: city,
-          Price: price,
-          Day: day,
-          Picture: picture,
-          Description: description 
-        };
-      }
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "/add", true);
+	xhr.sendRequestHeader('Content-Type', 'application/json');
+	xhr.send(JSON.stringify({
+		Name: name,
+        Address: address,
+        City: city,
+        Price: price,
+        Day: day,
+        Picture: picture,
+        Description: description
+	)};
 
-      //Something in here maybe...
-
-       
-    });*/
-  hideCreateSpaceModal();
+	hideCreateSpaceModal();
   }
-  else{
-    alert("You must specify all values marked by *");
-  }
+}
 
+function removeSpace(event){
+	var address = event.parentNode.parentNode.querySelector('.detail-address').textContent;
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "/delete", true);
+	xhr.sendRequestHeader('Content-Type', 'application/json');
+	xhr.send(JSON.stringify({
+		Address: address
+	)};
+}
+
+function reserveSpace(event){
+	var address = event.parentNode.parentNode.querySelector('.detail-address').textContent;
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "/delete", true);
+	xhr.sendRequestHeader('Content-Type', 'application/json');
+	xhr.send(JSON.stringify({
+		Address: address
+	)};
 }
 
 function showLargerViewModal() {
