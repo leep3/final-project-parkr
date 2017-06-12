@@ -93,6 +93,7 @@ a {
   background-color: #dc4405;
   color: #fff;
   font-style: italic;
+  color: white;
 }
 
 .navbar {
@@ -124,6 +125,7 @@ a:focus {
   border-bottom: 1px solid silver;
   border-top: 1px solid white;
   border-bottom-style: ridge;
+  box-shadow: -10px 0px 50px gray;
 
  
 }
@@ -242,9 +244,16 @@ a:focus {
 }
 
 .img-container{
+	
   margin:10px 10px 10px 10px;
   text-align: center;
   
+}
+
+.park-photo-img
+{
+	border: 1px solid silver;
+	border-radius: 10px;
 }
 
 .dismiss-button{
