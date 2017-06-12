@@ -127,7 +127,7 @@ var numberElements = [locationElements.length, daysElements.length, priceElement
 var spaceArticles = document.getElementsByTagName('article');
 
 sorting = function (i, j) {
-    var temp
+    var temp;
     for (var k = 0; k < numberElements[i]; k++) {
         if (k !== j) {
             temp = document.getElementById(contentID[i]).querySelectorAll("a")[k];
