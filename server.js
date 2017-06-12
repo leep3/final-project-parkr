@@ -94,31 +94,31 @@ app.post('/search', function(req, res){
 	//Create empty object array
 	var matchingSpots = {};
 	matchingSpots['key'] = [];
-		
-	//Get the latitude and longitude for the entered address
-	geocoder.geocode(address, function(err, resp){
-		//Store it as an object for later comparison
-		var latlng = {latitude: resp[0].latitude, longitude: resp[0].longitude};
-		
-		//Loop through all the spots in the JSON file 
-		for(var spot of availSpots){
-			//Get the lat/long of the current spot
-			var spotCoords = {latitude: spot.lat, longitude: spot.lng};
+	if(address != "" && radius != ""){
+		//Get the latitude and longitude for the entered address
+		geocoder.geocode(address, function(err, resp){
+			//Store it as an object for later comparison
+			var latlng = {latitude: resp[0].latitude, longitude: resp[0].longitude};
 			
-			//Check if it is within the radius, convert returned meters to miles, and available
-			if((geolib.getDistance(spotCoords, latlng, 10) < (radius * 1609)) && (spot.avail)){
-				//If so, add it to the array
-				matchingSpots['key'].push(spot);
+			//Loop through all the spots in the JSON file 
+			for(var spot of availSpots){
+				//Get the lat/long of the current spot
+				var spotCoords = {latitude: spot.lat, longitude: spot.lng};
+				
+				//Check if it is within the radius, convert returned meters to miles, and available
+				if((geolib.getDistance(spotCoords, latlng, 10) < (radius * 1609)) && (spot.avail)){
+					//If so, add it to the array
+					matchingSpots['key'].push(spot);
+				}
 			}
-		}
-		
-		var templateArgs = {
-			spaceData: matchingSpots['key']
-		};
+			
+			var templateArgs = {
+				spaceData: matchingSpots['key']
+			};
 
-		res.render('mainPage', templateArgs);
-	});
-
+			res.render('mainPage', templateArgs);
+		});
+	}
 });
 
 //Function for adding spots
@@ -148,6 +148,9 @@ app.post('/add', function(req, res, next){
 				console.log(err);
 			}
 		});
+		
+		//Send success response
+		res.status(200).send();
 	});
 });
 
@@ -163,6 +166,12 @@ app.post('/delete', function(req, res, next){
 			availSpots.splice(availSpots.indexOf(spot), 1);
 			//Let the browser know it was successful
 			res.status(200).send();
+			//Save the updated array to the spot.json
+			fs.writeFile("./spots.json", JSON.stringify(availSpots), function(err){
+				if(err){
+					console.log(err);
+				}
+			});
 			break;
 		}
 	}
@@ -170,6 +179,7 @@ app.post('/delete', function(req, res, next){
 
 //Reserve spot
 app.post('/reserve', function(req, res, next){
+	console.log("reserved");
 	//Get the address from the spot to be reserved
 	var spotAddress = req.body.Address.split(": ")[1];
 	//Loop through the spots until we find a match
@@ -180,6 +190,12 @@ app.post('/reserve', function(req, res, next){
 			availSpots.indexOf(spot).avail = false;
 			//Let the browser know it was successful
 			res.status(200).send();
+			//Save the updated array to the spot.json
+			fs.writeFile("./spots.json", JSON.stringify(availSpots), function(err){
+				if(err){
+					console.log(err);
+				}
+			});
 			break;
 		}
 	}
@@ -211,30 +227,8 @@ app.get('*', function(req, res, next){
 app.get('*', function(req, res, next){
 	res.status(404).render('404Page');
 });
+
 // Start the server listening on the specified port.
 app.listen(port, function () {
   console.log("== Server listening on port", port);
 });
-
-//Save the JSON before closing
-//process.stdin.resume();
-/*
-function exitHandler(){
-	console.log(availSpots);
-	if(spotChange){
-		fs.writeFile(__dirname + '/spots.json', availSpots, function(err){
-			if(err){
-				console.log(err);
-			}
-		});
-	}
-}
-
-//do something when app is closing
-process.on('exit', exitHandler.bind());
-
-//catches ctrl+c event
-process.on('SIGINT', exitHandler.bind());
-
-//catches uncaught exceptions
-//process.on('uncaughtException', exitHandler.bind());*/
