@@ -90,6 +90,9 @@ function reserveButtonAction(event) {
     var cancelButton = reserveButton.parentNode.querySelector('.modal-cancel-reserve-button');
     cancelButton.classList.remove('hidden');
     reserveButton.parentNode.parentNode.parentNode.parentNode.classList.add('reserved');
+	//reserveButton.parentNode.parentNode.parentNode.parentNode.childNodes.classList.add('park-opacque');
+	//console.log(reserveButton.parentNode.parentNode.parentNode.parentNode);
+	reserveButton.parentNode.parentNode.parentNode.parentNode.firstChild.nextSibling.nextSibling.nextSibling.classList.add('park-opacque');
 }
 
 function reserveCancelButtonAction(event) {
@@ -99,6 +102,7 @@ function reserveCancelButtonAction(event) {
     reserveButton.classList.remove('reserved');
     reserveButton.innerHTML = 'Reserve';
     reserveButton.parentNode.parentNode.parentNode.parentNode.classList.remove('reserved');
+	reserveButton.parentNode.parentNode.parentNode.parentNode.firstChild.nextSibling.nextSibling.nextSibling.classList.remove('park-opacque');
 }
 
 function showLargerViewModal(event) {

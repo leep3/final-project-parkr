@@ -513,5 +513,14 @@ a:focus {
 }
 
 .space.reserved {
-    background-color: #dc4405;
+    background: url("Reserved.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	//opacity: 0.3;
 }
+
+.park-opacque
+{
+	opacity: 0.5;
+}
+
