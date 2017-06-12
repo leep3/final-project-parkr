@@ -464,7 +464,7 @@ a:focus {
 }
 
 
-#larger-view-modal {
+.larger-view-modal {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -474,17 +474,17 @@ a:focus {
     overflow: scroll;
 }
 
-#larger-view-modal .modal-dialog{
+.larger-view-modal .modal-dialog{
     max-width: 1000px;
     max-height: 800px ;
 }
 
-#larger-view-modal .modal-body{
+.larger-view-modal .modal-body{
     display:flex;
     padding-top: 0px;
 }
 
-#larger-view-modal .img-container {
+.larger-view-modal .img-container {
     margin: 10px 10px 10px 10px;
     border: 1px;
     text-align: left;
