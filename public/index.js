@@ -89,6 +89,7 @@ function reserveButtonAction(event) {
     reserveButton.innerHTML = 'Reserved!';
     var cancelButton = reserveButton.parentNode.querySelector('.modal-cancel-reserve-button');
     cancelButton.classList.remove('hidden');
+    reserveButton.parentNode.parentNode.parentNode.parentNode.classList.add('reserved');
 }
 
 function reserveCancelButtonAction(event) {
@@ -97,6 +98,7 @@ function reserveCancelButtonAction(event) {
     var reserveButton = cancelButton.parentNode.querySelector('.modal-reserve-button');
     reserveButton.classList.remove('reserved');
     reserveButton.innerHTML = 'Reserve';
+    reserveButton.parentNode.parentNode.parentNode.parentNode.classList.remove('reserved');
 }
 
 function showLargerViewModal(event) {
@@ -105,7 +107,6 @@ function showLargerViewModal(event) {
 
     var address = event.toElement.parentNode.parentNode.querySelector('.larger-view-modal');
     address.classList.remove('hidden');
-    console.log("work!");
 }
 
 function hideLargerViewModal() {
@@ -153,9 +154,10 @@ sorting = function (i, j) {
                     for (var z = 0; z < spaceArticles.length; z++) {
                         if (spaceArticles[z].getElementsByClassName(contentID[x])[0].innerHTML.toLowerCase().indexOf(allElements[x][y]) === -1) {
                             spaceArticles[z].classList.add('hidden');
-                            count = count * 0;
                         }
+
                     }
+                    count = 0;
                 }
             }
             if (count === allElements[x].length) {
