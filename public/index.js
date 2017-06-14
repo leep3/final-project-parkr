@@ -53,8 +53,16 @@ function insertNewSpace(){
         Picture: picture,
         Description: description
 	}));
-
-	hideCreateSpaceModal();
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == XMLHttpRequest.DONE){
+			if(xhr.responseText == "Invalid address"){
+				alert("Error adding spot. Please check your entry and try again.");
+			}
+			else{
+				hideCreateSpaceModal();
+			}
+		}
+	}
   }
   else{
 	  alert("You must specify all the values marked by a *");
