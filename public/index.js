@@ -104,6 +104,7 @@ function reserveButtonAction(event) {
 }
 
 function reserveCancelButtonAction(event) {
+	reserveSpace();
     var cancelButton = event.toElement;
     cancelButton.classList.add('hidden');
     var reserveButton = cancelButton.parentNode.querySelector('.modal-reserve-button');

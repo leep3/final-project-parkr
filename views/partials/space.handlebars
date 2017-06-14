@@ -1,4 +1,8 @@
+{{#if avail}}
 <article class="space">
+{{else}}
+<article class="space reserved">
+{{/if}}
     <div class="first-line">
       <div class="park-icon">
         <i class="fa fa-map-pin"></i>
@@ -7,7 +11,11 @@
           {{Address}}
       </div>
     </div>
+	{{#if avail}}
     <div class="img-container">
+	{{else}}
+	<div class="img-container park-opacque">
+	{{/if}}
       <img class="park-photo-img" src="{{Picture}}" height="250px" width="350px">
     </div>
     <div class="hidden">
@@ -50,8 +58,13 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="modal-cancel-reserve-button hidden">Cancel</button>
-                <button type="button" class="modal-reserve-button">Reserve</button>
+				{{#if avail}}
+					<button type="button" class="modal-cancel-reserve-button hidden">Cancel</button>
+					<button type="button" class="modal-reserve-button">Reserve</button>
+				{{else}}
+					<button type="button" class="modal-cancel-reserve-button">Cancel</button>
+					<button type="button" class="modal-reserve-button reserved">Reserved!</button>
+				{{/if}}
             </div>
         </div>
     </div>
