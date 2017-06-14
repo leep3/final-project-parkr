@@ -93,27 +93,22 @@ app.post('/search', function(req, res){
 	var matchingSpots = {};
 	matchingSpots['key'] = [];
 	if(address != "" && radius != ""){
-		/*
+		
 		//Get the latitude and longitude for the entered address
 		geocoder.geocode(address, function(err, resp){
 			//Store it as an object for later comparison
 			var latlng = {latitude: resp[0].latitude, longitude: resp[0].longitude};
 			
 			//Loop through all the spots in the JSON file */
-			var i = 0;
 			for(var spot of availSpots){
 				//Get the lat/long of the current spot
 				var spotCoords = {latitude: spot.lat, longitude: spot.lng};
 				
 				//Check if it is within the radius, convert returned meters to miles, and available
-				//if((geolib.getDistance(spotCoords, latlng, 10) < (radius * 1609)) && (spot.avail)){
+				if(geolib.getDistance(spotCoords, latlng, 10) < (radius * 1609)){
 					//If so, add it to the array
 					matchingSpots['key'].push(spot);
-					i = i + 1;
-					if(i == 10){
-						break;
-					}
-				//}
+				}
 			}
 			
 			var templateArgs = {
@@ -121,7 +116,7 @@ app.post('/search', function(req, res){
 			};
 
 			res.render('mainPage', templateArgs);
-	//	});
+		});
 	}
 });
 
@@ -129,32 +124,41 @@ app.post('/search', function(req, res){
 app.post('/add', function(req, res, next){
 	//Get the lat/long of the address for easier searching later
 	geocoder.geocode(req.body.Address + " " + req.body.City, function(err, resp){
-		//Create a new spot object
-		var newSpot = {
-			Name: req.body.Name,
-			Address: req.body.Address,
-			City: req.body.City,
-			Price: req.body.Price,
-			Day: req.body.Day,
-			Picture: req.body.Picture,
-			Description: req.body.Description,
-			lat: resp[0].latitude,
-			lng: resp[0].longitude,
-			avail: true
-		};
-		
-		//Add the new spot to the array 
-		availSpots.push(newSpot);
-		
-		//Save the updated array to the spot.json
-		fs.writeFile("./spots.json", JSON.stringify(availSpots), function(err){
-			if(err){
-				console.log(err);
-			}
-		});
-		
-		//Send success response
-		res.status(200).send();
+		//Check for valid response
+		if(!resp || typeof resp == 'undefined'){
+			res.status(500).send("Invalid address");
+		}
+		else if(resp[0]){
+			//Create a new spot object
+			var newSpot = {
+				Name: req.body.Name,
+				Address: req.body.Address,
+				City: req.body.City,
+				Price: req.body.Price,
+				Day: req.body.Day,
+				Picture: req.body.Picture,
+				Description: req.body.Description,
+				lat: resp[0].latitude,
+				lng: resp[0].longitude,
+				avail: true
+			};
+			
+			//Add the new spot to the array 
+			availSpots.push(newSpot);
+			
+			//Save the updated array to the spot.json
+			fs.writeFile("./spots.json", JSON.stringify(availSpots), function(err){
+				if(err){
+					console.log(err);
+				}
+			});
+			
+			//Send success response
+			res.status(200).send();
+		}
+		else{
+			res.status(500).send("Invalid address");
+		}
 	});
 });
 
