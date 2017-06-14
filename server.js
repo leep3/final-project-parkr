@@ -93,29 +93,30 @@ app.post('/search', function(req, res){
 	var matchingSpots = {};
 	matchingSpots['key'] = [];
 	if(address != "" && radius != ""){
-		
 		//Get the latitude and longitude for the entered address
 		geocoder.geocode(address, function(err, resp){
-			//Store it as an object for later comparison
-			var latlng = {latitude: resp[0].latitude, longitude: resp[0].longitude};
-			
-			//Loop through all the spots in the JSON file */
-			for(var spot of availSpots){
-				//Get the lat/long of the current spot
-				var spotCoords = {latitude: spot.lat, longitude: spot.lng};
+			if(resp[0]){
+				//Store it as an object for later comparison
+				var latlng = {latitude: resp[0].latitude, longitude: resp[0].longitude};
 				
-				//Check if it is within the radius, convert returned meters to miles, and available
-				if(geolib.getDistance(spotCoords, latlng, 10) < (radius * 1609)){
-					//If so, add it to the array
-					matchingSpots['key'].push(spot);
+				//Loop through all the spots in the JSON file */
+				for(var spot of availSpots){
+					//Get the lat/long of the current spot
+					var spotCoords = {latitude: spot.lat, longitude: spot.lng};
+					
+					//Check if it is within the radius, convert returned meters to miles, and available
+					if(geolib.getDistance(spotCoords, latlng, 10) < (radius * 1609)){
+						//If so, add it to the array
+						matchingSpots['key'].push(spot);
+					}
 				}
-			}
-			
-			var templateArgs = {
-				spaceData: matchingSpots['key']
-			};
+				
+				var templateArgs = {
+					spaceData: matchingSpots['key']
+				};
 
-			res.render('mainPage', templateArgs);
+				res.render('mainPage', templateArgs);
+			}
 		});
 	}
 });
@@ -170,9 +171,8 @@ app.post('/delete', function(req, res, next){
 	//for(var spot of availSpots){
 	for(var i = 0; i < availSpots.length; i++){
 		var spot = availSpots[i];
-		console.log(spot.address);
 		//Check for a match, convert to uppercase for case insenitive search
-		if(spot.Address.toUpperCase() == spotAddress.toUpperCase()){
+		if(spot.Address.trim() == spotAddress.trim()){
 			//Take out the spot and reform the array
 			availSpots.splice(availSpots.indexOf(spot), 1);
 			//Let the browser know it was successful

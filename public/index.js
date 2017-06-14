@@ -80,9 +80,7 @@ function removeSpace(){
 	}));
 }
 
-function reserveSpace(){
-    var address = document.getElementsByClassName('detail-address')[0].textContent;
-	
+function reserveSpace(address){
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/reserve", true);
 	xhr.setRequestHeader('Content-Type', 'application/json');
@@ -92,6 +90,7 @@ function reserveSpace(){
 }
 
 function reserveButtonAction(event) {
+	reserveSpace(event.toElement.parentNode.parentNode.querySelector('.detail-address').textContent);
     var reserveButton = event.toElement;
     reserveButton.classList.add('reserved');
     reserveButton.innerHTML = 'Reserved!';
@@ -104,7 +103,8 @@ function reserveButtonAction(event) {
 }
 
 function reserveCancelButtonAction(event) {
-	reserveSpace();
+	console.log(event.toElement.parentNode.parentNode.querySelector('.detail-address').textContent);
+	//reserveSpace(event.toElement.parentNode.parentNode.querySelector('.detail-address').textContent);
     var cancelButton = event.toElement;
     cancelButton.classList.add('hidden');
     var reserveButton = cancelButton.parentNode.querySelector('.modal-reserve-button');
@@ -230,7 +230,6 @@ window.addEventListener('DOMContentLoaded', function(event){
       largerViewButton[i].getElementsByTagName('img')[0].addEventListener('click', showLargerViewModal);
       largerViewButton[i].querySelector('.modal-close-button').addEventListener('click', hideLargerViewModal);
       reserveButton[i].addEventListener('click', reserveButtonAction);
-      reserveButton[i].addEventListener('click', reserveSpace);
       cancelReserveButton[i].addEventListener('click', reserveCancelButtonAction);
   }
 
