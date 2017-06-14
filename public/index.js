@@ -63,6 +63,8 @@ function insertNewSpace(){
 			}
 		}
 	}
+  } else if (isNaN(price) || price < 0 || !(Number.isInteger(price * 100))) {
+      alert("You have to type proper price.");
   }
   else{
 	  alert("You must specify all the values marked by a *");
