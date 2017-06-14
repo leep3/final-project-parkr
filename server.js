@@ -93,27 +93,22 @@ app.post('/search', function(req, res){
 	var matchingSpots = {};
 	matchingSpots['key'] = [];
 	if(address != "" && radius != ""){
-		/*
+		
 		//Get the latitude and longitude for the entered address
 		geocoder.geocode(address, function(err, resp){
 			//Store it as an object for later comparison
 			var latlng = {latitude: resp[0].latitude, longitude: resp[0].longitude};
 			
 			//Loop through all the spots in the JSON file */
-			var i = 0;
 			for(var spot of availSpots){
 				//Get the lat/long of the current spot
 				var spotCoords = {latitude: spot.lat, longitude: spot.lng};
 				
 				//Check if it is within the radius, convert returned meters to miles, and available
-				//if((geolib.getDistance(spotCoords, latlng, 10) < (radius * 1609)) && (spot.avail)){
+				if(geolib.getDistance(spotCoords, latlng, 10) < (radius * 1609)){
 					//If so, add it to the array
 					matchingSpots['key'].push(spot);
-					i = i + 1;
-					if(i == 10){
-						break;
-					}
-				//}
+				}
 			}
 			
 			var templateArgs = {
@@ -121,7 +116,7 @@ app.post('/search', function(req, res){
 			};
 
 			res.render('mainPage', templateArgs);
-	//	});
+		});
 	}
 });
 
