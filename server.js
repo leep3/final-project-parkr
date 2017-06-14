@@ -163,7 +163,10 @@ app.post('/delete', function(req, res, next){
 	//Get the address from the spot to be deleted
 	var spotAddress = req.body.Address.split(": ")[1];
 	//Loop through the spots until we find a match
-	for(var spot of availSpots){
+	//for(var spot of availSpots){
+	for(var i = 0; i < availSpots.length; i++){
+		var spot = availSpots[i];
+		console.log(spot.address);
 		//Check for a match, convert to uppercase for case insenitive search
 		if(spot.Address.toUpperCase() == spotAddress.toUpperCase()){
 			//Take out the spot and reform the array
@@ -183,15 +186,15 @@ app.post('/delete', function(req, res, next){
 
 //Reserve spot
 app.post('/reserve', function(req, res, next){
-	console.log("reserved");
 	//Get the address from the spot to be reserved
 	var spotAddress = req.body.Address.split(": ")[1];
 	//Loop through the spots until we find a match
-	for(var spot of availSpots){
+	for(var i = 0; i < availSpots.length; i++){
+		var spot = availSpots[i];
 		//Check for a match, convert to uppercase for case insenitive search
-		if(spot.Address.toUpperCase() == spotAddress.toUpperCase()){
+		if(spot.Address.trim() == spotAddress.trim()){
 			//Change the availability to false
-			availSpots.indexOf(spot).avail = false;
+			availSpots[i].avail = !availSpots[i].avail;
 			//Let the browser know it was successful
 			res.status(200).send();
 			//Save the updated array to the spot.json
