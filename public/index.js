@@ -223,7 +223,6 @@ window.addEventListener('DOMContentLoaded', function(event){
       reserveButton[i].addEventListener('click', reserveButtonAction);
       reserveButton[i].addEventListener('click', reserveSpace);
       cancelReserveButton[i].addEventListener('click', reserveCancelButtonAction);
-      cancelReserveButton[i].addEventListener('click', removeSpace);
   }
 
   var modalAcceptButton = document.querySelector('.modal-accept-button');
